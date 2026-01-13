@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILFAFA UNIVERSITY Student Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+
+        <!-- Login Page -->
+        <div id="login-page" class="login-container">
+            <div class="login-card">
+                <h1>Student Portal Login</h1>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Student ID / Email</label>
+                        <input type="text" id="email" required aria-required="true" placeholder="user">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" required aria-required="true" placeholder="12345">
+                            <i class="fas fa-eye" id="toggle-password" aria-label="Toggle password visibility" tabindex="0" role="button"></i>
+                        </div>
+                    </div>
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <p class="cred">Credentials: user/12345</p>
+                <div id="login-error" class="error" role="alert"></div>
+                <div id="loading" class="loading hidden">Loading...</div>
+            </div>
+        </div>
+
+        <!-- Main Application -->
+        <div id="main-app" class="main-app hidden">
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h2>Student Portal</h2>
+                    <i class="fas fa-bars hamburger" id="hamburger" aria-label="Toggle sidebar" tabindex="0" role="button"></i>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li data-page="dashboard" class="active"><i class="fas fa-home"></i> Dashboard</li>
+                    <li data-page="semester-registration"><i class="fas fa-clipboard-list"></i> Semester Registration</li>
+                    <li data-page="course-registration"><i class="fas fa-book"></i> Course Registration</li>
+                    <li data-page="results"><i class="fas fa-chart-bar"></i> Results / Transcript</li>
+                    <li data-page="fees"><i class="fas fa-money-bill"></i> Fees / Finance</li>
+                    <li data-page="timetable"><i class="fas fa-calendar-alt"></i> Timetable</li>
+                    <li data-page="profile"><i class="fas fa-user"></i> Profile</li>
+                    <li data-page="support"><i class="fas fa-question-circle"></i> Support / Help Desk</li>
+                    <li id="logout"><i class="fas fa-sign-out-alt"></i> Logout</li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <header>
+                    <h1 id="page-title">Dashboard</h1>
+                    <div class="header-right">
+                        <i class="fas fa-moon dark-toggle" id="dark-toggle" aria-label="Toggle dark mode" tabindex="0" role="button"></i>
+                    </div>
+                </header>
+
+                <!-- Dashboard Page -->
+                <section id="dashboard" class="page">
+                    <div class="hero" style="background-image: url(images/background.png);"></div>
+                    <h2 id="welcome-message">Welcome, Student</h2>
+                    <div class="progress-bar">
+                        <label>Registration Progress</label>
+                        <div class="bar"><div id="progress-fill" style="width: 0%;"></div></div>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="quick-actions">
+                        <button data-action="semester-registration">Continue Registration</button>
+                        <button data-action="course-registration">Register Courses</button>
+                        <button data-action="results">View Results</button>
+                    </div>
+                    <div class="summary-cards">
+                        <div class="card">
+                            <h3>Registration Status</h3>
+                            <p id="reg-status">Incomplete</p>
+                        </div>
+                        <div class="card">
+                            <h3>CGPA</h3>
+                            <p id="cgpa">0.00</p>
+                        </div>
+                        <div class="card">
+                            <h3>Credits Registered</h3>
+                            <p id="credits">0</p>
+                        </div>
+                        <div class="card">
+                            <h3>Academic Year</h3>
+                            <p id="academic-year">N/A</p>
+                        </div>
+                    </div>
+                    <div class="notifications">
+                        <h3>Notifications</h3>
+                        <ul id="notifications-list"></ul>
+                        <div id="no-notifications" class="empty-state hidden">
+                            <img src="https://s3-figma-hubfile-images-production.figma.com/hub/file/carousel/img/008b5b898b972654eed8ff4e2b8f0ab0c6f215e6" alt="No notifications">
+                            <p>No notifications at this time.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Semester Registration Page -->
+                <section id="semester-registration" class="page hidden">
+                    <div class="stepper">
+                        <ul id="stepper-list">
+                            <li class="active" data-step="1">Personal Info</li>
+                            <li data-step="2">Academic Info</li>
+                            <li data-step="3">Documents Upload</li>
+                            <li data-step="4">Review & Submit</li>
+                        </ul>
+                    </div>
+                    <form id="semester-form">
+                        <div class="step" id="step-1">
+                            <!-- Personal Info Fields -->
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth</label>
+                                <input type="date" id="dob" required>
+                            </div>
+                            <!-- More fields as needed -->
+                        </div>
+                        <div class="step hidden" id="step-2">
+                            <!-- Academic Info Fields -->
+                            <div class="form-group">
+                                <label for="program">Program</label>
+                                <select id="program" required>
+                                    <option value="">Select Program</option>
+                                    <option value="cs">Computer Science</option>
+                                    <option value="cs">Computer Engineering</option>
+                                    <option value="cs">Electrical Engineering</option>
+                                    <!-- Add more -->
+                                </select>
+                            </div>
+                            <!-- More fields -->
+                        </div>
+                        <div class="step hidden" id="step-3">
+                            <!-- Documents Upload -->
+                            <div class="form-group">
+                                <label for="doc-upload">Upload Documents</label>
+                                <input type="file" id="doc-upload" multiple>
+                            </div>
+                        </div>
+                        <div class="step hidden" id="step-4">
+                            <!-- Review -->
+                            <div id="review-content"></div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" id="prev-step" disabled>Previous</button>
+                            <button type="button" id="next-step">Next</button>
+                            <button type="button" id="save-draft">Save Draft</button>
+                            <button type="submit" id="submit-reg" class="hidden">Submit</button>
+                        </div>
+                    </form>
+                    <div class="error" id="semester-error"></div>
+                </section>
+
+                <!-- Course Registration Page -->
+                <section id="course-registration" class="page hidden">
+                    <div class="filters">
+                        <input type="text" id="course-search" placeholder="Search courses...">
+                        <select id="course-type">
+                            <option value="">All Types</option>
+                            <option value="core">Core</option>
+                            <option value="elective">Elective</option>
+                        </select>
+                        <select id="course-dept">
+                            <option value="">All Departments</option>
+                            <option value="cs">Computer Science</option>
+                            <!-- Add more -->
+                        </select>
+                    </div>
+                    <table id="course-table">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Credits</th>
+                                <th>Type</th>
+                                <th>Department</th>
+                            </tr>
+                        </thead>
+                        <tbody id="course-body"></tbody>
+                    </table>
+                    <div class="sticky-footer">
+                        <p>Selected Credits: <span id="selected-credits">0</span> / Max: 18</p>
+                        <button id="submit-courses">Register Courses</button>
+                    </div>
+                    <div class="error" id="course-error"></div>
+                </section>
+
+                <!-- Results / Transcript Page -->
+                <section id="results" class="page hidden">
+                    <table id="results-table">
+                        <thead>
+                            <tr>
+                                <th>Semester</th>
+                                <th>Course</th>
+                                <th>Grade</th>
+                                <th>Credits</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body"></tbody>
+                    </table>
+                    <div class="gpa-summary">
+                        <p>GPA: <span id="gpa">0.00</span></p>
+                        <p>CGPA: <span id="cgpa-results">0.00</span></p>
+                    </div>
+                    <button id="download-transcript">Download Transcript</button>
+                </section>
+
+                <!-- Fees / Finance Page (Placeholder) -->
+                <section id="fees" class="page hidden">
+                    <h2>Fees / Finance</h2>
+                    <p>Content coming soon.</p>
+                </section>
+
+                <!-- Timetable Page (Placeholder) -->
+                <section id="timetable" class="page hidden">
+                    <h2>Timetable</h2>
+                    <p>Content coming soon.</p>
+                </section>
+
+                <!-- Profile Page -->
+                <section id="profile" class="page hidden">
+                    <div class="profile-header">
+                        <div class="photo-upload">
+                            <img id="profile-photo" src="https://via.placeholder.com/150" alt="Profile Photo">
+                            <input type="file" id="photo-input" accept="image/*">
+                            <button id="upload-photo">Upload Photo</button>
+                        </div>
+                        <h2 id="profile-name">Student Name</h2>
+                    </div>
+                    <form id="profile-form">
+                        <h3>Personal Details</h3>
+                        <div class="form-group">
+                            <label for="profile-full-name">Full Name</label>
+                            <input type="text" id="profile-full-name">
+                        </div>
+                        <!-- More fields -->
+                        <h3>Contact Info</h3>
+                        <div class="form-group">
+                            <label for="profile-email">Email</label>
+                            <input type="email" id="profile-email">
+                        </div>
+                        <!-- More -->
+                        <h3>Emergency Contact</h3>
+                        <div class="form-group">
+                            <label for="emergency-name">Name</label>
+                            <input type="text" id="emergency-name">
+                        </div>
+                        <!-- More -->
+                        <h3>Security</h3>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password">
+                        </div>
+                        <button class="button1" type="button" id="change-password">Change Password</button>
+                        <button class="button1" type="button" id="logout-sessions">Logout All Sessions</button>
+                        <button class="button1" type="submit">Save Changes</button>
+                    </form>
+                </section>
+
+                <!-- Support Page (Placeholder) -->
+                <section id="support" class="page hidden">
+                    <h2>Support / Help Desk</h2>
+                    <p>Content coming soon.</p>
+                </section>
+            </div>
+        </div>
+
+        <!-- Logout Confirmation Modal -->
+        <div id="logout-modal" class="modal hidden">
+            <div class="modal-content">
+                <p>Are you sure you want to logout?</p>
+                <button id="confirm-logout">Yes</button>
+                <button id="cancel-logout">No</button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

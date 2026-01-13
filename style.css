@@ -1,0 +1,604 @@
+/* CSS Variables */
+:root {
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --bg: #f8f9fa;
+    --text: #333;
+    --card-bg: #fff;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+.dark {
+    --bg: #333;
+    --text: #f8f9fa;
+    --card-bg: #444;
+    --shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* General Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    transition: var(--transition);
+}
+
+.hidden {
+    display: none !important;
+}
+
+button, input, select {
+    transition: var(--transition);
+}
+
+button:focus, input:focus, select:focus {
+    outline: 2px solid var(--primary);
+}
+
+.button1{
+    margin-bottom: 2px;
+    width: 200px;
+}
+
+/* Login Page */
+.login-container {
+    background: url('images/campus.jpg') no-repeat center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-card h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--secondary);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox input {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+button {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.error {
+    color: var(--danger);
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.loading {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.cred{
+    color: black;
+    padding-top: 20px ;
+}
+
+/* Main App */
+.main-app {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-menu li {
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu li i {
+    margin-right: 1rem;
+}
+
+.nav-menu li.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+.nav-menu li:hover {
+    background: var(--secondary);
+    color: #fff;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    margin-left: 250px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-right i {
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+/* Dashboard */
+.hero {
+    height: 200px;
+    background-size: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    margin-bottom: 2rem;
+}
+
+.bar {
+    background: var(--secondary);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    background: var(--primary);
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.quick-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quick-actions button {
+    flex: 1;
+    width: auto;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.notifications ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notifications li {
+    background: var(--card-bg);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.empty-state {
+    text-align: center;
+}
+
+.empty-state img {
+    max-width: 200px;
+}
+
+/* Stepper */
+.stepper ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.stepper li {
+    padding: 0.5rem 1rem;
+    background: var(--secondary);
+    color: #fff;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.stepper li.active {
+    background: var(--primary);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-actions button {
+    width: auto;
+}
+
+/* Course Table */
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filters input, .filters select {
+    flex: 1;
+    padding: 0.75rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+th, td {
+    padding: 1rem;
+    border: 1px solid var(--secondary);
+    text-align: left;
+}
+
+.sticky-footer {
+    position: sticky;
+    bottom: 0;
+    background: var(--bg);
+    padding: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+.modal-content button {
+    margin: 0.5rem;
+    width: auto;
+}
+
+/* Profile */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.photo-upload {
+    margin-right: 1rem;
+}
+
+#profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#photo-input {
+    display: none;
+}
+
+#upload-photo {
+    margin-top: 0.5rem;
+    width: 150px;
+}
+
+/* Responsive Design */
+/* Tablet and Mobile (max-width: 768px) */
+/* Responsive Design */
+/* Tablet and Mobile (max-width: 768px) */
+/* Responsive Design */
+/* Tablet and Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden; /* Prevent horizontal scrolling when sidebar is hidden */
+    }
+
+    .sidebar {
+        position: fixed; /* Better overlay */
+        top: 0;
+        left: -100%; /* Fully hide by shifting left by its own width */
+        width: 250px;
+        max-width: 80vw; /* Adapt to smaller screens */
+        height: 100vh;
+        transition: left 0.3s ease; /* Smooth slide-in */
+        z-index: 1000; /* Overlay content */
+        overflow-y: auto; /* Allow scrolling if menu is long */
+    }
+
+    .sidebar.active {
+        left: 0; /* Slide in */
+    }
+
+    .hamburger {
+        display: block; /* Show on small screens */
+        position: fixed; /* Fix to top for better accessibility */
+        top: 1rem;
+        left: 1rem;
+        z-index: 1001; /* Above sidebar */
+    }
+
+    .main-content {
+        margin-left: 0; /* No sidebar space */
+        padding: 1rem; /* Reduced padding */
+        transition: margin-left 0.3s ease; /* Smooth content shift if needed */
+    }
+
+    /* Header adjustments */
+    header {
+        padding-left: 3rem; /* Space for hamburger */
+        position: relative;
+    }
+
+    /* Stack quick actions vertically */
+    .quick-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .quick-actions button {
+        width: 100%;
+    }
+
+    /* Single-column grid for summary cards */
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
+    /* Make tables scrollable horizontally */
+    table {
+        overflow-x: auto;
+        display: block;
+        width: 100%;
+    }
+
+    /* Reduce font sizes for headers */
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2, h3 {
+        font-size: 1.2rem;
+    }
+
+    .card {
+        padding: 0.75rem;
+    }
+
+    /* Stepper: stack steps vertically */
+    .stepper ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stepper li {
+        margin-bottom: 0.5rem;
+        width: 100%; /* Full width for better touch */
+    }
+
+    /* Form actions: stack buttons */
+    .form-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    /* Profile header: stack for mobile */
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .photo-upload {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    /* Notifications: adjust for smaller screens */
+    .notifications li {
+        padding: 0.75rem;
+    }
+
+    /* Hero: reduce height */
+    .hero {
+        height: 150px;
+    }
+}
+
+/* Mobile (max-width: 480px) - Extra tweaks for very small screens */
+@media (max-width: 480px) {
+    .sidebar {
+        max-width: 90vw; /* Slightly wider on tiny screens for usability */
+    }
+
+    .filters {
+        flex-direction: column; /* Stack filters */
+        gap: 0.5rem;
+    }
+
+    .filters input, .filters select {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .login-container {
+        padding: 0.5rem;
+    }
+
+    .login-card {
+        padding: 1rem;
+        max-width: 95%; /* Almost full width */
+        border-radius: 4px; /* Smaller radius for compact feel */
+    }
+
+    button {
+        padding: 0.5rem;
+        font-size: 0.9rem; /* Slightly smaller text */
+    }
+
+    input, select {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Hero: further reduce */
+    .hero {
+        height: 120px;
+    }
+
+    /* Tables: ensure cells don't overflow */
+    th, td {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    /* Modal: full screen on tiny devices */
+    .modal-content {
+        width: 90%;
+        padding: 1rem;
+    }
+}
+
+/* General touch-friendly adjustments (applies to all screens) */
+button, .nav-menu li, .hamburger, input[type="checkbox"] {
+    min-height: 44px; /* Standard touch target size */
+    min-width: 44px;
+    touch-action: manipulation; /* Improve touch responsiveness */
+}
+
+/* Landscape orientation tweaks (optional, for tablets in landscape) */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .summary-cards {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns in landscape */
+    }
+
+    .quick-actions {
+        flex-direction: row; /* Side-by-side if space allows */
+    }
+}
